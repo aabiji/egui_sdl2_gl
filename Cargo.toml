@@ -1,6 +1,6 @@
 [package]
 name = "egui_sdl2_gl"
-version = "0.28"
+version = "0.28.0"
 authors = ["Abigail Adegbiji <adegbijiabigail@gmail.com", "Arjun Nair <arjunair@gmail.com>"]
 edition = "2018"
 description = "Backend for Egui to use with sdl2-rs and open gl"

@@ -320,15 +320,29 @@ pub fn input_to_egui(
         MouseWheel { x, y, .. } => {
             let delta = vec2(x as f32 * 8.0, y as f32 * 8.0);
             let sdl = window.subsystem().sdl();
-            if sdl.keyboard().mod_state() & Mod::LCTRLMOD == Mod::LCTRLMOD
-                || sdl.keyboard().mod_state() & Mod::RCTRLMOD == Mod::RCTRLMOD
-            {
+            let mods = sdl.keyboard().mod_state();
+            let zoom =
+                mods & Mod::LCTRLMOD == Mod::LCTRLMOD || mods & Mod::RCTRLMOD == Mod::RCTRLMOD;
+            let xscroll =
+                mods & Mod::LSHIFTMOD == Mod::LSHIFTMOD || mods & Mod::RSHIFTMOD == Mod::RSHIFTMOD;
+
+            if zoom {
                 state
                     .input
                     .events
                     .push(Event::Zoom((delta.y / 125.0).exp()));
+            } else if xscroll {
+                state.input.events.push(Event::MouseWheel {
+                    unit: MouseWheelUnit::Point,
+                    delta: egui::vec2(delta.x + delta.y, 0.0),
+                    modifiers: Default::default(),
+                });
             } else {
-                state.input.events.push(Event::Scroll(delta));
+                state.input.events.push(Event::MouseWheel {
+                    unit: MouseWheelUnit::Point,
+                    delta: egui::vec2(delta.x, delta.y),
+                    modifiers: Default::default(),
+                });
             }
         }
 

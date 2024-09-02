@@ -56,14 +56,6 @@ fn main() {
         let output = egui_ctx.end_frame();
         egui_state.process_output(&window, &output.platform_output);
 
-        // Update window when the size of resized window is very
-        // small (to avoid egui::CentralPanel distortions).
-        if egui_ctx.used_size() != painter.screen_rect.size() {
-            let size = egui_ctx.used_size();
-            let (w, h) = (size.x as u32, size.y as u32);
-            window.set_size(w, h).unwrap();
-        }
-
         // Render
         let paint_jobs = egui_ctx.tessellate(output.shapes, output.pixels_per_point);
         painter.paint_jobs(None, output.textures_delta, paint_jobs);

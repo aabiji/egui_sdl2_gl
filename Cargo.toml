@@ -1,13 +1,13 @@
 [package]
 name = "egui_sdl2_gl"
-version = "0.27.1"
-authors = ["Arjun Nair <arjunair@gmail.com>"]
+version = "0.28"
+authors = ["Abigail Adegbiji <adegbijiabigail@gmail.com", "Arjun Nair <arjunair@gmail.com>"]
 edition = "2018"
 description = "Backend for Egui to use with sdl2-rs and open gl"
-homepage = "https://github.com/ArjunNair/egui_sdl2_gl"
+homepage = "https://github.com/aabiji/egui_sdl2_gl"
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/ArjunNair/egui_sdl2_gl"
+repository = "https://github.com/aabiji/egui_sdl2_gl"
 categories = ["gui", "graphics"]
 keywords = ["sdl2", "opengl", "egui", "gui", "gamedev"]
 include = ["**/*.rs", "Cargo.toml", "/shaders"]
@@ -15,9 +15,9 @@ include = ["**/*.rs", "Cargo.toml", "/shaders"]
 [dependencies]
 ahash = "~0.8"
 gl = "~0.14"
-egui = ">= 0.28"
-sdl2 = { version = ">= 0.36" }
-memoffset = "0.9.0"
+egui = "~0.28"
+sdl2 = { version = "~0.36" }
+memoffset = "~0.9"
 
 [dependencies.epi]
 version = "0.17"
